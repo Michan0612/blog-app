@@ -35,6 +35,14 @@ class ArticlesController < ApplicationController
         end
     end
 
+    def destroy
+        # インスタンス変数ではなく、ローカル変数（Viewで使用しないから）
+        article = Article.find(params[:id])
+        # エラーが出た時にストップするように「！」を付けて、例外処理をしている
+        article.destroy!
+        redirect_to root_path, notice: '削除に成功しました'
+    end
+
     private
     def article_params
         params.require(:article).permit(:title, :content)

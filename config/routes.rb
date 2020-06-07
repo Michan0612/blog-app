@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root to: 'articles#index'
 
 #   ここでGETリクエストをしている
-  resources :articles, only: [:show, :new, :create, :edit, :update]
+  resources :articles, only: [:show, :new, :create, :edit, :update, :destroy]
 end
