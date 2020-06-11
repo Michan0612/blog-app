@@ -8,5 +8,9 @@ Rails.application.routes.draw do
 
   #   ここでGETリクエストをしている
   # onlyオプションは必要ないので削除しました
-  resources :articles
+  resources :articles do
+    resources :comments, only: %i[new create]
+  end
+
+  resource :profile, only: [:show, :edit, :update]
 end
