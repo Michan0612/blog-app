@@ -8,5 +8,12 @@ Rails.application.routes.draw do
 
   #   ここでGETリクエストをしている
   # onlyオプションは必要ないので削除しました
-  resources :articles
+  resources :articles do
+    resources :comments, only: %i[new create]
+
+    resource :like, only: [:create, :destroy]
+  end
+
+  resource :profile, only: [:show, :edit, :update]
+  resources :favorites, only: [:index]
 end
