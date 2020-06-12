@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   # onlyオプションは必要ないので削除しました
   resources :articles do
     resources :comments, only: %i[new create]
+
+    resource :like, only: [:create, :destroy]
   end
 
   resource :profile, only: [:show, :edit, :update]
+  resources :favorites, only: [:index]
 end
