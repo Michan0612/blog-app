@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
@@ -7,8 +9,6 @@ module BlogApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    
-
 
     if Rails.env.development? || Rails.env.test?
       Bundler.require(*Rails.groups)

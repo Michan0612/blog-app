@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
 
   def display_name
-    profile&.nickname || self.email.split('@').first
+    profile&.nickname || email.split('@').first
   end
 
   def birthday
@@ -57,7 +57,7 @@ class User < ApplicationRecord
 
   def avatar_image
     if profile&.avatar&.attached?
-      profile.avatar  
+      profile.avatar
     else
       'default-avatar.png'
     end
