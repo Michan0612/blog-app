@@ -16,5 +16,5 @@
 #
 class Comment < ApplicationRecord
   belongs_to :article
-  validates :content, presence: ture
+  validates :content, presence: true
   end
