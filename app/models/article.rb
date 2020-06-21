@@ -5,7 +5,6 @@
 # Table name: articles
 #
 #  id         :bigint           not null, primary key
-#  content    :text             not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -16,6 +15,8 @@
 #  index_articles_on_user_id  (user_id)
 #
 class Article < ApplicationRecord
+  has_rich_text :content
+
   has_one_attached :eyecatch
 
   validates :title, presence: true

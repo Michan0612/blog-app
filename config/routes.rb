@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root to: 'articles#index'
 
+  
+
   #   ここでGETリクエストをしている
   # onlyオプションは必要ないので削除しました
   resources :articles do
