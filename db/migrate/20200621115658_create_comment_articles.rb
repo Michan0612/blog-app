@@ -1,6 +1,6 @@
-class CreateCommet < ActiveRecord::Migration[6.0]
+class CreateCommentArticles < ActiveRecord::Migration[6.0]
   def change
-    create_table :commets do |t|
+    create_table :comment_articles do |t|
       t.references :article, null: false
       t.text :content, null: false
       t.timestamps
