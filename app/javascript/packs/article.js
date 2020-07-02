@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const hasLiked = response.data.hasLiked
       handleHeartDisplay(hasLiked)
     })
-    
+
     listenInactiveHeartEvent(articleId)
     listenActiveHeartEvent(articleId)
   
