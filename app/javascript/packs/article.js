@@ -1,12 +1,9 @@
 import $ from 'jquery'
-import axios from 'axios'
-import { csrfToken } from 'rails-ujs'
+import axios from 'modules/axios'
 import {
   listenInactiveHeartEvent,
   listenActiveHeartEvent
 } from 'modules/handle_heart'
-
-axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 const handleHeartDisplay = (hasLiked) => {
   if (hasLiked) {
@@ -29,7 +26,6 @@ const appendNewComment = (comment) => {
   )
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#article-show').data()
   const articleId = dataset.articleId
@@ -40,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
       comments.forEach((comment) => {
         appendNewComment(comment)
       })
+    })
+    .catch((error) => {
+      window.alert('失敗！')
     })
 
   handleCommentForm()
@@ -66,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
       handleHeartDisplay(hasLiked)
     })
 
-    listenInactiveHeartEvent(articleId)
-    listenActiveHeartEvent(articleId)
-  
+  listenInactiveHeartEvent(articleId)
+  listenActiveHeartEvent(articleId)
 })
