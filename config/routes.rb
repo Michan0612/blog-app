@@ -8,23 +8,31 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root to: 'articles#index'
-  resource :timeline, only: [:show]
+
 
   
 
   #   ここでGETリクエストをしている
   # onlyオプションは必要ないので削除しました
-  resources :articles do
-    resources :comment_articles, only: %i[index new create]
-
-    resource :like, only: %i[show create destroy]
-  end
+  resources :articles 
 
   resources :accounts, only: [:show] do
     resources :follows, only: [:create]
     resources :unfollows, only: [:create]
   end
 
-  resource :profile, only: %i[show edit update]
-  resources :favorites, only: [:index]
+  scope module: :apps do
+    resources :favorites, only: [:index]
+    resource :profile, only: %i[show edit update]
+    resource :timeline, only: [:show]
+  end
+
+ 
+
+  namespace :api, defaults: {format: :json} do
+    scope '/articles/:article_id' do
+      resources :comment_articles, only: [:index, :create]
+      resource :like, only: [:show, :create, :destroy]
+    end
+  end
 end
