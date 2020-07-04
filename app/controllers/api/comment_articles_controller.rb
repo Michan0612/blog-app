@@ -1,9 +1,4 @@
-class CommentArticlesController < ApplicationController
-    def new
-      article = Article.find(params[:article_id])
-      @comment = article.comment_article.build
-    end
-
+class Api::CommentArticlesController < Api::ApplicationController
     def index
       article = Article.find(params[:article_id])
       comments = article.comment_article
