@@ -9,11 +9,6 @@ Rails.application.routes.draw do
 
   root to: 'articles#index'
 
-
-  
-
-  #   ここでGETリクエストをしている
-  # onlyオプションは必要ないので削除しました
   resources :articles 
 
   resources :accounts, only: [:show] do
@@ -26,8 +21,6 @@ Rails.application.routes.draw do
     resource :profile, only: %i[show edit update]
     resource :timeline, only: [:show]
   end
-
- 
 
   namespace :api, defaults: {format: :json} do
     scope '/articles/:article_id' do

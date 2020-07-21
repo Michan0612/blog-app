@@ -22,6 +22,8 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  validates :title, length: { minimum: 2, maximum: 100 }
+
   has_many :comment_article, dependent: :destroy
   has_many :likes, dependent: :destroy
   belongs_to :user
